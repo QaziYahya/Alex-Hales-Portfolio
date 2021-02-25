@@ -67,8 +67,6 @@ function changePageState() {
   // Get the scrollY position of the document
   let scrollY = window.scrollY;
 
-  // console.log(window.innerWidth);
-
   /* If scoll position is greater than 10 than change the background and
   color of the home icon */
 
@@ -253,15 +251,16 @@ function openMenu() {
   if (!isOpen) {
     document.querySelector('.main-navbar').style.transform = 'translateX(0)';
     isOpen = true;
+    console.log('Open');
   } else {
     document.querySelector('.main-navbar').style.transform =
       'translateX(-300px)';
     isOpen = false;
+    console.log('Close');
   }
 }
 
 function changeScrollY(e) {
-  document.querySelector('.main-navbar').style.transform = 'translateX(-300px)';
   if (window.innerWidth > 600) {
     if (e.target.classList.contains('fa-home')) {
       window.scrollTo(0, 0);
@@ -277,6 +276,9 @@ function changeScrollY(e) {
       window.scrollTo(0, 4324);
     }
   } else {
+    document.querySelector('.main-navbar').style.transform =
+      'translateX(-300px)';
+    isOpen = false;
     if (e.target.classList.contains('fa-home')) {
       window.scrollTo(0, 0);
     } else if (e.target.classList.contains('fa-user')) {
