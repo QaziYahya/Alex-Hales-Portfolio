@@ -48,10 +48,6 @@ body {
   background: #fff;
 }
 
-.mobile-navbar {
-  display: none;
-}
-
 /* Nav-Bar Styling */
 .main-navbar {
   position: fixed;
@@ -179,20 +175,8 @@ body {
 
 /* About Section Styling: Skills */
 .section-b {
-  /* display: none;
-  animation-name: about-section-animation;
-  animation-duration: 2.3s; */
   opacity: 0;
   transition: 2.3s;
-}
-
-@keyframes about-section-animation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 .section-b .about .info {
@@ -229,9 +213,7 @@ body {
   color: #fff;
   padding: 30px 30px 50px 30px;
   text-align: center;
-  /* animation: skill-animation 0.8s; */
-  /* opacity: 0; */
-  /* transition: 0.8s; */
+  animation: skill-animation 0.8s;
 }
 
 @keyframes skill-animation {
@@ -346,26 +328,13 @@ body {
 /* Section-c Styling: Achievements */
 .section-c .achievements {
   display: flex;
-  /* display: none; */
   justify-content: space-evenly;
   text-align: center;
   background: #f6f6f6;
   padding: 50px;
   margin-top: 40px;
-  /* animation: achievement-animation 1s; */
   opacity: 0;
   transition: 1s;
-}
-
-@keyframes achievement-animation {
-  from {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .section-c .achievements .achievement-icon {
@@ -384,21 +353,8 @@ body {
 
 /* Section-d Resume Styling */
 .section-d {
-  /* display: none; */
-  /* animation: resume-animation 2.5s; */
   opacity: 0;
   transition: 2s;
-}
-
-@keyframes resume-animation {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .section-d .resume {
@@ -476,21 +432,8 @@ body {
 
 /* Section-e testimnials styling */
 .section-e {
-  /* display: none;
-  animation: testimonial-animation 1s; */
   opacity: 0;
   transition: 1s;
-}
-
-@keyframes testimonial-animation {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .section-e .testimonials {
@@ -569,27 +512,15 @@ body {
   height: 1.2rem;
   background: rgb(112, 112, 112);
   margin: 0 auto;
+  padding: 3px;
   border-radius: 50%;
   cursor: pointer;
 }
 
 /* Section-f: Projects Styling */
 .section-f {
-  /* display: none;
-  animation: projects-animation 2s; */
   opacity: 0;
   transition: 2s;
-}
-
-@keyframes projects-animation {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .section-f .projects {
@@ -707,21 +638,8 @@ body {
 
 /* Section-g: Contact form styling */
 .section-g {
-  /* display: none;
-  animation: contact-letsStart-footer-animation 2s; */
   opacity: 0;
   transition: 2s;
-}
-
-@keyframes contact-letsStart-footer-animation {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .section-g .contact-form {
@@ -778,22 +696,18 @@ body {
 }
 
 .section-g .lets-start {
-  /* display: none; */
   font-size: 40px;
   padding: 60px;
   background: #171414;
   color: #fff;
-  /* animation: contact-letsStart-animation 2.5s; */
   opacity: 0;
   transition: 2s;
 }
 
 .main-footer {
-  /* display: none; */
   padding: 20px;
   background: #171414;
   color: #fff;
-  /* animation: contact-letsStart-footer-animation 2s; */
   opacity: 0;
   transition: 2s;
 }

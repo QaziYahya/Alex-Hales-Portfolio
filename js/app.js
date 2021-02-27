@@ -1,3 +1,4 @@
+// Change the scroll to the top when the document is reloaded
 document.documentElement.scrollTop = 0;
 
 // Scroll Event on the entire document
@@ -9,21 +10,26 @@ document.querySelector('.main-navbar').addEventListener('click', changeScrollY);
 // Event Listener on the plus icon in the projects section
 document.querySelector('.section-f').addEventListener('click', displayModal);
 
+// Event Listener on the circles in the testimonials section
 document.querySelector('.circles').addEventListener('click', changeTestimonial);
 
+// Event Listener on the menu icon for mobile devices
 document.querySelector('.menu-icon').addEventListener('click', openMenu);
 
-// Change background and color of home icon
-document.querySelector('.fa-home').style.background = '#333';
-document.querySelector('.fa-home').style.color = '#fff';
-
-document.querySelector('.circle-1').style.background = '#fff';
-
+/* When the window is resized to desktops/Laptops then pull the menu back
+out */
 window.addEventListener('resize', () => {
   if (window.innerWidth > 640) {
     document.querySelector('.main-navbar').style.transform = 'translateX(0)';
   }
 });
+
+// Change background and color of home icon
+document.querySelector('.fa-home').style.background = '#333';
+document.querySelector('.fa-home').style.color = '#fff';
+
+/* Change the background of the very first circle in testimonials section */
+document.querySelector('.circle-1').style.background = '#fff';
 
 // Below is the type writer function and all of its variables
 let word = 'Web Developer';
@@ -36,11 +42,11 @@ setInterval(() => {
     document.querySelector('.showcase-txt').textContent += word[index];
     index++;
   } else {
-    // setTimeout(() => {
     let textContent = document.querySelector('.showcase-txt').textContent;
     textContent = textContent.substr(0, textContent.length - 1);
     document.querySelector('.showcase-txt').textContent = textContent;
     printEnd++;
+
     if (printEnd === word.length) {
       printEnd = 0;
       printCount++;
@@ -56,211 +62,248 @@ setInterval(() => {
         index = 0;
       }
     }
-    // }, 3000);
   }
 }, 300);
 
 let runCounter = false;
+
+// Counter function
+function counter() {
+  if (!runCounter) {
+    runCounter = true;
+
+    let totalClients = 0;
+    let clear1 = setInterval(function () {
+      totalClients++;
+      document.querySelector('.number-1').textContent = totalClients;
+      if (totalClients == 412) {
+        clearInterval(clear1);
+      }
+    }, 1);
+
+    let totalProjects = 0;
+    let clear2 = setInterval(function () {
+      totalProjects++;
+      document.querySelector('.number-2').textContent = totalProjects;
+      if (totalProjects == 322) {
+        clearInterval(clear2);
+      }
+    }, 1);
+
+    let hoursWorked = 0;
+    let clear3 = setInterval(function () {
+      hoursWorked++;
+      document.querySelector('.number-3').textContent = hoursWorked;
+      if (hoursWorked == 1132) {
+        clearInterval(clear3);
+      }
+    }, 1);
+
+    let totalAwards = 0;
+    let clear4 = setInterval(function () {
+      totalAwards++;
+      document.querySelector('.number-4').textContent = totalAwards;
+      if (totalAwards == 47) {
+        clearInterval(clear4);
+      }
+    }, 50);
+  }
+}
 
 // Change the state
 function changePageState() {
   // Get the scrollY position of the document
   let scrollY = window.scrollY;
 
-  /* If scoll position is greater than 10 than change the background and
-  color of the home icon */
+  /* We only want the following to happen if the window length is greater than
+  640px. We have a different version of this for mobile devicess */
+  if (window.innerWidth > 640) {
+    if (scrollY > 581) {
+      document.querySelector('.fa-home').style.background = '#fff';
+      document.querySelector('.fa-home').style.color = '#333';
 
-  if (scrollY > 581) {
-    document.querySelector('.fa-home').style.background = '#fff';
-    document.querySelector('.fa-home').style.color = '#333';
-
-    /* If scroll position is not geater than 581 then change the background and
-    color of the home icon to default */
-  } else {
-    document.querySelector('.fa-home').style.background = '#333';
-    document.querySelector('.fa-home').style.color = '#fff';
-  }
-
-  /* When we scroll to the about section then change the background and color
-  of the about icon and display the about section */
-
-  if (scrollY >= 10 && scrollY <= 819) {
-    // Display the about section
-    document.querySelector('.section-b').style.opacity = '1';
-
-    /* Change the background and color of the about icon when we reach this
-    position */
-    if (scrollY >= 511) {
-      // Change the background and color of the about icon
-      document.querySelector('.fa-user').style.background = '#333';
-      document.querySelector('.fa-user').style.color = '#fff';
+      /* If scroll position is not geater than 581 then change the background and
+      color of the home icon to default */
     } else {
+      document.querySelector('.fa-home').style.background = '#333';
+      document.querySelector('.fa-home').style.color = '#fff';
+    }
+
+    /* When we scroll to the about section then change the background and color
+    of the about icon and display the about section */
+
+    if (scrollY >= 10 && scrollY <= 819) {
+      // Display the about section
+      document.querySelector('.section-b').style.opacity = '1';
+
+      /* Change the background and color of the about icon when we reach this
+      position */
+      if (scrollY >= 511) {
+        // Change the background and color of the about icon
+        document.querySelector('.fa-user').style.background = '#333';
+        document.querySelector('.fa-user').style.color = '#fff';
+
+        /* If scroll position is not geater than 511 then change the background and
+      color of the home icon to default */
+      } else {
+        document.querySelector('.fa-user').style.background = '#fff';
+        document.querySelector('.fa-user').style.color = '#333';
+      }
+
+      /* If scroll position is greater than 1026 then do the following */
+    } else if (scrollY > 1026) {
       document.querySelector('.fa-user').style.background = '#fff';
       document.querySelector('.fa-user').style.color = '#333';
     }
 
-    /* If scroll position is greater than 1026 then do the following */
-  } else if (scrollY > 1026) {
-    document.querySelector('.fa-user').style.background = '#fff';
-    document.querySelector('.fa-user').style.color = '#333';
-  }
-
-  /* Display the skills section and when we scroll down to it */
-  if (scrollY >= 574 && scrollY <= 1230) {
-    document.querySelector('.skills').style.display = 'block';
-  }
-
-  /* Display the achievements section and when we scroll down to it */
-  if (scrollY >= 1247 && scrollY <= 1514) {
-    document.querySelector('.achievements').style.opacity = '1';
-
-    if (!runCounter) {
-      runCounter = true;
-
-      let totalClients = 0;
-      let clear1 = setInterval(function () {
-        totalClients++;
-        document.querySelector('.number-1').textContent = totalClients;
-        if (totalClients == 412) {
-          clearInterval(clear1);
-        }
-      }, 1);
-
-      let totalProjects = 0;
-      let clear2 = setInterval(function () {
-        totalProjects++;
-        document.querySelector('.number-2').textContent = totalProjects;
-        if (totalProjects == 322) {
-          clearInterval(clear2);
-        }
-      }, 1);
-
-      let hoursWorked = 0;
-      let clear3 = setInterval(function () {
-        hoursWorked++;
-        document.querySelector('.number-3').textContent = hoursWorked;
-        if (hoursWorked == 1132) {
-          clearInterval(clear3);
-        }
-      }, 1);
-
-      let totalAwards = 0;
-      let clear4 = setInterval(function () {
-        totalAwards++;
-        document.querySelector('.number-4').textContent = totalAwards;
-        if (totalAwards == 47) {
-          clearInterval(clear4);
-        }
-      }, 50);
+    /* Display the skills section when we scroll down to it */
+    if (scrollY >= 574 && scrollY <= 1230) {
+      document.querySelector('.skills').style.display = 'block';
     }
-  }
 
-  /* Display the resume section and when we scroll down to it and 
-  change the background and color of the resume icon  */
+    /* Display the achievements section when we scroll down to it */
+    if (scrollY >= 1247 && scrollY <= 1514) {
+      document.querySelector('.achievements').style.opacity = '1';
 
-  if (scrollY >= 1507 && scrollY <= 2295) {
-    document.querySelector('.section-d').style.opacity = '1';
+      // Run the counter
+      counter();
+    }
 
-    /* Change the background and color of the resume icon when we reach this
-    position */
-    if (scrollY >= 1983 && scrollY <= 2464) {
-      document.querySelector('.fa-file').style.background = '#333';
-      document.querySelector('.fa-file').style.color = '#fff';
-    } else {
+    /* Display the resume section and when we scroll down to it and 
+    change the background and color of the resume icon  */
+
+    if (scrollY >= 1507 && scrollY <= 2295) {
+      document.querySelector('.section-d').style.opacity = '1';
+
+      /* Change the background and color of the resume icon when we reach this
+      position */
+      if (scrollY >= 1983 && scrollY <= 2464) {
+        document.querySelector('.fa-file').style.background = '#333';
+        document.querySelector('.fa-file').style.color = '#fff';
+      } else {
+        document.querySelector('.fa-file').style.background = '#fff';
+        document.querySelector('.fa-file').style.color = '#333';
+      }
+
+      /* If scroll position is greater than 2464 then do the following */
+    } else if (scrollY > 2664) {
       document.querySelector('.fa-file').style.background = '#fff';
       document.querySelector('.fa-file').style.color = '#333';
     }
 
-    /* If scroll position is greater than 2464 then do the following */
-  } else if (scrollY > 2664) {
-    document.querySelector('.fa-file').style.background = '#fff';
-    document.querySelector('.fa-file').style.color = '#333';
-  }
+    /* Display the testimonials section and when we scroll down to it and 
+    change the background and color of the testimonial icon  */
 
-  /* Display the testimonials section and when we scroll down to it and 
-  change the background and color of the testimonial icon  */
+    if (scrollY >= 2223 && scrollY <= 2780) {
+      document.querySelector('.section-e').style.opacity = '1';
 
-  if (scrollY >= 2223 && scrollY <= 2780) {
-    document.querySelector('.section-e').style.opacity = '1';
+      /* Change the background and color of the testimonials icon when we reach this
+      position */
+      if (scrollY >= 2668 && scrollY <= 2968) {
+        document.querySelector('.fa-comment-dots').style.background = '#333';
+        document.querySelector('.fa-comment-dots').style.color = '#fff';
+      } else {
+        document.querySelector('.fa-comment-dots').style.background = '#fff';
+        document.querySelector('.fa-comment-dots').style.color = '#333';
+      }
 
-    /* Change the background and color of the testimonials icon when we reach this
-    position */
-    if (scrollY >= 2668 && scrollY <= 2968) {
-      document.querySelector('.fa-comment-dots').style.background = '#333';
-      document.querySelector('.fa-comment-dots').style.color = '#fff';
-    } else {
+      /* If scroll position is greater than 3068 then do the following */
+    } else if (scrollY > 3068) {
       document.querySelector('.fa-comment-dots').style.background = '#fff';
       document.querySelector('.fa-comment-dots').style.color = '#333';
     }
 
-    /* If scroll position is greater than 3068 then do the following */
-  } else if (scrollY > 3068) {
-    document.querySelector('.fa-comment-dots').style.background = '#fff';
-    document.querySelector('.fa-comment-dots').style.color = '#333';
-  }
+    /* Display the projects section when we scroll down to it and 
+    change the background and color of the project icon  */
 
-  /* Display the projects section when we scroll down to it and 
-  change the background and color of the project icon  */
+    if (scrollY >= 2727 && scrollY <= 3730) {
+      document.querySelector('.section-f').style.opacity = '1';
 
-  if (scrollY >= 2727 && scrollY <= 3730) {
-    document.querySelector('.section-f').style.opacity = '1';
+      /* Change the background and color of the project icon when we reach this
+      position */
+      if (scrollY >= 3100 && scrollY <= 4047) {
+        document.querySelector('.fa-project-diagram').style.background = '#333';
+        document.querySelector('.fa-project-diagram').style.color = '#fff';
+      } else {
+        document.querySelector('.fa-project-diagram').style.background = '#fff';
+        document.querySelector('.fa-project-diagram').style.color = '#333';
+      }
 
-    /* Change the background and color of the project icon when we reach this
-    position */
-    if (scrollY >= 3100 && scrollY <= 4047) {
-      document.querySelector('.fa-project-diagram').style.background = '#333';
-      document.querySelector('.fa-project-diagram').style.color = '#fff';
-    } else {
+      /* If scroll position is greater than 4047 then do the following */
+    } else if (scrollY > 4047) {
       document.querySelector('.fa-project-diagram').style.background = '#fff';
       document.querySelector('.fa-project-diagram').style.color = '#333';
     }
 
-    /* If scroll position is greater than 4047 then do the following */
-  } else if (scrollY > 4047) {
-    document.querySelector('.fa-project-diagram').style.background = '#fff';
-    document.querySelector('.fa-project-diagram').style.color = '#333';
-  }
+    /* Display the contact section when we scroll down to it and 
+    change the background and color of the contact icon  */
 
-  /* Display the contact section when we scroll down to it and 
-  change the background and color of the contact icon  */
+    if (scrollY >= 3824 && scrollY <= 4239) {
+      document.querySelector('.section-g').style.opacity = '1';
+      document.querySelector('.lets-start').style.opacity = '1';
+      document.querySelector('.main-footer').style.opacity = ' 1';
 
-  if (scrollY >= 3824 && scrollY <= 4239) {
-    document.querySelector('.section-g').style.opacity = '1';
-    document.querySelector('.lets-start').style.opacity = '1';
-    document.querySelector('.main-footer').style.opacity = ' 1';
+      /* Change the background and color of the contact icon when we reach this
+      position */
+      if (scrollY >= 4047 && scrollY <= 4324) {
+        document.querySelector('.fa-address-book').style.background = '#333';
+        document.querySelector('.fa-address-book').style.color = '#fff';
+      } else {
+        document.querySelector('.fa-address-book').style.background = '#fff';
+        document.querySelector('.fa-address-book').style.color = '#333';
+      }
 
-    /* Change the background and color of the contact icon when we reach this
-    position */
-    if (scrollY >= 4047 && scrollY <= 4324) {
-      document.querySelector('.fa-address-book').style.background = '#333';
-      document.querySelector('.fa-address-book').style.color = '#fff';
-    } else {
+      /* If scroll position is greater than 4324 then do the following */
+    } else if (scrollY > 4324) {
       document.querySelector('.fa-address-book').style.background = '#fff';
       document.querySelector('.fa-address-book').style.color = '#333';
     }
 
-    /* If scroll position is greater than 4324 then do the following */
-  } else if (scrollY > 4324) {
-    document.querySelector('.fa-address-book').style.background = '#fff';
-    document.querySelector('.fa-address-book').style.color = '#333';
+    // For Mobile Devices
+  } else if (window.innerWidth < 640) {
+    if (scrollY >= 115) {
+      document.querySelector('.section-b').style.opacity = '1';
+    }
+    if (scrollY >= 1220) {
+      document.querySelector('.skills').style.display = 'block';
+    }
+    if (scrollY >= 2111) {
+      document.querySelector('.achievements').style.opacity = '1';
+      counter();
+    }
+    if (scrollY >= 2726) {
+      document.querySelector('.section-d').style.opacity = '1';
+    }
+    if (scrollY >= 4008) {
+      document.querySelector('.section-e').style.opacity = '1';
+    }
+    if (scrollY >= 4711) {
+      document.querySelector('.section-f').style.opacity = '1';
+    }
+    if (scrollY >= 6892) {
+      document.querySelector('.section-g').style.opacity = '1';
+      document.querySelector('.lets-start').style.opacity = '1';
+      document.querySelector('.main-footer').style.opacity = ' 1';
+    }
   }
 }
 
+// Opening and closing of menu for mobile devices
 let isOpen = false;
 function openMenu() {
   if (!isOpen) {
     document.querySelector('.main-navbar').style.transform = 'translateX(0)';
     isOpen = true;
-    console.log('Open');
   } else {
     document.querySelector('.main-navbar').style.transform =
       'translateX(-300px)';
     isOpen = false;
-    console.log('Close');
   }
 }
 
+// Change the scollY of the document when any of the menu button is clicked
 function changeScrollY(e) {
+  // For desktops/Computers/Tablets
   if (window.innerWidth > 600) {
     if (e.target.classList.contains('fa-home')) {
       window.scrollTo(0, 0);
@@ -275,6 +318,8 @@ function changeScrollY(e) {
     } else if (e.target.classList.contains('fa-address-book')) {
       window.scrollTo(0, 4324);
     }
+
+    // For Mobile Devices
   } else {
     document.querySelector('.main-navbar').style.transform =
       'translateX(-300px)';
@@ -295,6 +340,7 @@ function changeScrollY(e) {
   }
 }
 
+// Displaying the project modal
 function displayModal(e) {
   let className = e.target.classList[0];
 
@@ -326,6 +372,7 @@ function displayModal(e) {
   }
 }
 
+// Change the testimonial when the circle is clicked
 function changeTestimonial(e) {
   let nodeList = document.querySelector('.circles').childNodes;
 
