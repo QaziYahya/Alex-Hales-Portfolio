@@ -357,8 +357,8 @@
 @media (max-width: 600px) {
   .section-a .showcase .showcase-txt {
     font-size: 20px;
-    padding-top: 23rem;
-    margin: 0 0 0 30px;
+    padding-top: 90%;
+    margin: 0 0 0 25px;
   }
 
   .section-a .showcase .icons {
